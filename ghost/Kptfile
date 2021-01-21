@@ -1,0 +1,15 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: ghost
+packageMetadata:
+  shortDescription: sample description
+openAPI:
+  definitions:
+    io.k8s.cli.setters.mysqlpw:
+      x-k8s-cli:
+        setter:
+          name: mysqlpw
+          value: changeme!
+          required: true
+          isSet: false
