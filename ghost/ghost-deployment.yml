@@ -20,3 +20,14 @@ spec:
         env:
         - name: url # this url value is just an example, and is likely wrong for your environment!
           value: http://localhost:8080
+
+        - name: database__client # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
+          value: mysql
+        - name: database__connection__host
+          value: mysql
+        - name: database__connection__user
+          value: root
+        - name: database__connection__password
+          value: barbaz1234 # {"$kpt-set":"mysqlpw"}
+        - name: database__connection__database
+          value: ghost
