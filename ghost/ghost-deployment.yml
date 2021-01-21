@@ -18,17 +18,15 @@ spec:
         ports:
         - containerPort: 2368
         env:
-          # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
-          - name: database__client
-            value: mysql
-          - name: database__connection__host
-            value: db
-          - name: database__connection__user
-            value: root
-          - name: database__connection__password
-            value: changeme! # {"$kpt-set":"mysqlpw"}
-          - name: database__connection__database
-            value: ghost
-          # this url value is just an example, and is likely wrong for your environment!
-          - name: url
-            value: http://localhost:8080
+        - name: database__client # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
+          value: mysql
+        - name: database__connection__host
+          value: db
+        - name: database__connection__user
+          value: root
+        - name: database__connection__password
+          value: barbaz1234 # {"$kpt-set":"mysqlpw"}
+        - name: database__connection__database
+          value: ghost
+        - name: url # this url value is just an example, and is likely wrong for your environment!
+          value: http://localhost:8080

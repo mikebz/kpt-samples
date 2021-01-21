@@ -10,6 +10,6 @@ openAPI:
       x-k8s-cli:
         setter:
           name: mysqlpw
-          value: changeme!
+          value: barbaz1234
           required: true
-          isSet: false
+          isSet: true

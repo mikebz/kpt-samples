@@ -19,4 +19,4 @@ openAPI:
           isSet: true
           name: mysqlpw
           required: true
-          value: changeme!
+          value: barbaz1234
