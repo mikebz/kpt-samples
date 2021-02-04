@@ -1,0 +1,22 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: mysql
+upstream:
+  type: git
+  git:
+    commit: a73be666a433705696155a32379ed9bfb53392e2
+    repo: sso://user/mikebz/blueprints
+    directory: /mysql
+    ref: main
+packageMetadata:
+  shortDescription: simple mysql blueprint
+openAPI:
+  definitions:
+    io.k8s.cli.setters.mysqlpw:
+      x-k8s-cli:
+        setter:
+          isSet: false
+          name: mysqlpw
+          required: true
+          value: changeme!
