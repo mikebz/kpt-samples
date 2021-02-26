@@ -1,5 +1,5 @@
 bases:
-- ../common
+- ../../common
 patches:
 - path: instance.yaml
   target:
