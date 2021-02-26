@@ -1,0 +1,6 @@
+apiVersion: graybox.anthosapis.com/v1alpha1
+kind: Instance
+metadata:
+  name: "graydb"
+spec:
+  DBDomain: "graybox.gke.prod"

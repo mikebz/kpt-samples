@@ -1,0 +1,6 @@
+apiVersion: graybox.anthosapis.com/v1alpha1
+kind: InstanceTopology
+metadata:
+  name: graydb-topology
+spec:
+  instanceRole: "Primary"

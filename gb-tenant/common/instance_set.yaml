@@ -1,0 +1,20 @@
+# This is the simplest Instance Set with just one env/instance.
+apiVersion: graybox.anthosapis.com/v1alpha1
+kind: InstanceSet
+metadata:
+  name: system-generated-ignore
+spec:
+  appProperties:
+    tier: Development
+    growthProfile: "Transactional"
+    upgradePolicy: "Manual"
+    # manintenanceWindows:
+    # upgradeSoakingSchedule:
+    # slo:
+  # instanceTopologies:
+  # - spec:
+  #     fleetInstanceName:
+  #     env:
+  # - spec:
+  #     fleetInstanceName:
+  #     env:

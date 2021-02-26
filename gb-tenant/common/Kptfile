@@ -1,0 +1,13 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: common
+upstream:
+  type: git
+  git:
+    commit: 63991b57fffdf9a5069b1442b5935ed5bd3e6410
+    repo: sso://user/mikebz/blueprints
+    directory: /graybox/common
+    ref: main
+packageMetadata:
+  shortDescription: graybox common direcotry for Boris

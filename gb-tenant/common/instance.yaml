@@ -1,0 +1,44 @@
+apiVersion: graybox.anthosapis.com/v1alpha1
+kind: Instance
+metadata:
+  name: "graydb"
+spec:
+  type: Mimir
+  version: "12.2"
+  edition: Enterprise
+  DBDomain: "graybox.gke"
+  disks:
+  - name: DataDisk
+    size: 45Gi
+    type: pd-standard
+  - name: LogDisk
+    size: 55Gi
+    type: pd-standard
+  storageClass: csi-gce-pd
+  services:
+  - Backup
+  - Logging
+  - Monitoring
+  - ComplianceDaemon
+  sourceCidrRanges: [0.0.0.0/0]
+  imageContainsCDB: true
+  CDBName: "GCLOUD"
+  images:
+    service: "gcr.io/graybox-builds/oracle_12_2_enterprise_service:stable"
+  parameters:
+    # parallel_servers_target:dynamic  disk_asynch_io:static
+    parameterList: ["parallel_servers_target=15", "disk_asynch_io=TRUE"]
+    restartTimeRange: ["2021-01-15T15:30:30Z", "2121-02-15T15:45:30Z"]
+  additionalParams: ["open_cursors=300", "db_block_size=8192", "processes=300"]
+# Uncomment this section to trigger a restore.
+#  restore:
+#    backupType: "Snapshot" (or "Physical")
+#    backupId: "graydb-20200705-snap-996678001"
+#    force: True
+#    # once applied, new requests with same or older time will be ignored,
+#    # current time can be generated using the command: date -u '+%Y-%m-%dT%H:%M:%SZ'
+#    grayboxRequestTime: "2000-01-19T01:23:45Z"
+#    # Physical backup specific attributes:
+#    dop: 2
+#    # The unit for time limit is minutes (but specify just an integer).
+#    timeLimit: 180

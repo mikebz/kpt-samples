@@ -1,0 +1,4 @@
+resources:
+- instance.yaml
+- instance_topology.yaml
+- instance_set.yaml

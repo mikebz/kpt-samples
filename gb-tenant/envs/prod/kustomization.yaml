@@ -1,0 +1,9 @@
+bases:
+- ../common
+patches:
+- path: instance.yaml
+  target:
+    kind: Instance
+- path: instance_topology.yaml
+  target:
+    kind: InstanceTopology
