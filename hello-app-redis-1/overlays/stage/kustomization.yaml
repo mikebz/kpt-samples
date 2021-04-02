@@ -1,0 +1,8 @@
+namespace: kc-stage
+commonAnnotations:
+  note: kustomized for stage
+bases:
+- ../../app
+- ../../redis
+resources:
+- ./namespace.yaml
