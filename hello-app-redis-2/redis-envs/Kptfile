@@ -1,0 +1,18 @@
+apiVersion: kpt.dev/v1alpha2
+kind: Kptfile
+metadata:
+  name: redis-envs
+upstream:
+  type: git
+  git:
+    repo: sso://user/mikebz/blueprints
+    directory: /redis-envs
+    ref: main
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  gitLock:
+    repo: sso://user/mikebz/blueprints
+    directory: /redis-envs
+    ref: main
+    commit: 8a0341e1ccf2ca4f8e8f4a99302b94ee20b36b1c

@@ -1,0 +1,5 @@
+namespace: kc-prod
+commonAnnotations:
+  note: kustomized for prod
+bases:
+- ../../base
