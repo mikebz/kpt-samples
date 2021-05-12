@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha2
+kind: Kptfile
+metadata:
+  name: cloud-deploy
+info:
+  description: sample description
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/apply-labels:v0.1
+      configMap:
+        foo: bar
