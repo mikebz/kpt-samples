@@ -6,6 +6,9 @@ info:
   description: sample description
 pipeline:
   mutators:
-    - image: gcr.io/kpt-fn/apply-labels:v0.1
+    - image: gcr.io/kpt-fn/set-labels:unstable
       configMap:
         foo: bar
+    - image: gcr.io/kpt-fn/set-annotations:unstable
+      configMap:
+        note: kpt rendered for prod
