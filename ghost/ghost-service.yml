@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: ghost
 spec:
-  ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 2368
+  type: LoadBalancer
   selector:
     app: ghost
-  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 2368

@@ -6,19 +6,19 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.7
-        name: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD # Use secret in real usage
-          value: barbaz1234 # {"$kpt-set":"mysqlpw"}
-        ports:
-        - containerPort: 3306
-          name: mysql
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - name: mysql
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD # Use secret in real usage
+              value: barbaz1234 # kpt-set: ${mysqlpw}
+  strategy:
+    type: Recreate

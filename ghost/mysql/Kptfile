@@ -1,22 +1,24 @@
-apiVersion: kpt.dev/v1alpha1
+apiVersion: kpt.dev/v1alpha2
 kind: Kptfile
 metadata:
   name: mysql
 upstream:
   type: git
   git:
-    commit: dd72e8d8d6020193b46310f5dc1281873666e8c4
     repo: sso://user/mikebz/blueprints
     directory: /mysql
     ref: main
-packageMetadata:
-  shortDescription: simple mysql blueprint
-openAPI:
-  definitions:
-    io.k8s.cli.setters.mysqlpw:
-      x-k8s-cli:
-        setter:
-          isSet: true
-          name: mysqlpw
-          required: true
-          value: barbaz1234
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: sso://user/mikebz/blueprints
+    directory: /mysql
+    ref: main
+info:
+  description: simple mysql blueprint
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/apply-setters:v0.1
+      configMap:
+        mysqlpw: barbaz1234
