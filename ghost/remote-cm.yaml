@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: remote-cm-demo
 
-annotations:
-  config.kubernetes.io/local-config: "false" # this should get applied
-
+metadata:
+  annotations:
+    config.kubernetes.io/local-config: "false" # tools should ignore this
 
 data:
   character: "elf"

@@ -3,8 +3,9 @@ kind: ConfigMap
 metadata:
   name: local-cm-demo
 
-annotations:
-  config.kubernetes.io/local-config: "true" # tools should ignore this
+metadata:
+  annotations:
+    config.kubernetes.io/local-config: "true" # tools should ignore this
   
 data:
   character: "orc"
