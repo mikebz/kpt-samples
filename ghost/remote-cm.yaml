@@ -3,10 +3,6 @@ kind: ConfigMap
 metadata:
   name: remote-cm-demo
 
-annotations:
-  config.kubernetes.io/local-config: "false" # this should get applied
-
-
 data:
   character: "elf"
   mood: "calm"
