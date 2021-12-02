@@ -7,14 +7,13 @@ metadata:
   namespace: "default"
   labels:
     app.kubernetes.io/name: ghost
-    helm.sh/chart: ghost-15.1.0
+    helm.sh/chart: ghost-14.0.22
     app.kubernetes.io/instance: ghost
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: ghost
 spec:
   type: LoadBalancer
   externalTrafficPolicy: "Cluster"
-  sessionAffinity: None
   ports:
     - name: http
       port: 80

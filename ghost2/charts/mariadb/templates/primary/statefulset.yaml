@@ -7,7 +7,7 @@ metadata:
   namespace: default
   labels:
     app.kubernetes.io/name: mariadb
-    helm.sh/chart: mariadb-9.8.1
+    helm.sh/chart: mariadb-9.6.1
     app.kubernetes.io/instance: ghost
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: primary
@@ -25,10 +25,10 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/configuration: 6e1b31658fc9eeb6a23b8b19a2da4c138b8bb88b27e03385c5bbdf8b4b26cea9
+        checksum/configuration: 4b3da8436932ca3facf14d8cf64b9befe3b2bdccd686c4f936e82a601940f65f
       labels:
         app.kubernetes.io/name: mariadb
-        helm.sh/chart: mariadb-9.8.1
+        helm.sh/chart: mariadb-9.6.1
         app.kubernetes.io/instance: ghost
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: primary
@@ -56,7 +56,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: mariadb
-          image: docker.io/bitnami/mariadb:10.5.13-debian-10-r0
+          image: docker.io/bitnami/mariadb:10.5.12-debian-10-r32
           imagePullPolicy: "IfNotPresent"
           securityContext:
             runAsUser: 1001
