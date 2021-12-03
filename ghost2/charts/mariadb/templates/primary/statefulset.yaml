@@ -1,9 +1,8 @@
----
 # Source: ghost/charts/mariadb/templates/primary/statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: ghost-mariadb
+  name: test-ghost-mariadb
   namespace: default
   labels:
     app.kubernetes.io/name: mariadb
@@ -15,11 +14,11 @@ spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
-    matchLabels: 
+    matchLabels:
       app.kubernetes.io/name: mariadb
       app.kubernetes.io/instance: ghost
       app.kubernetes.io/component: primary
-  serviceName: ghost-mariadb
+  serviceName: test-ghost-mariadb
   updateStrategy:
     type: RollingUpdate
   template:
@@ -33,11 +32,9 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: primary
     spec:
-      
-      serviceAccountName: ghost-mariadb
+      serviceAccountName: test-ghost-mariadb
       affinity:
         podAffinity:
-          
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - podAffinityTerm:
@@ -51,7 +48,6 @@ spec:
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:
-          
       securityContext:
         fsGroup: 1001
       containers:
@@ -66,14 +62,14 @@ spec:
             - name: MARIADB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: ghost-mariadb
+                  name: test-ghost-mariadb
                   key: mariadb-root-password
             - name: MARIADB_USER
               value: "bn_ghost"
             - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: ghost-mariadb
+                  name: test-ghost-mariadb
                   key: mariadb-password
             - name: MARIADB_DATABASE
               value: "bitnami_ghost"
@@ -112,7 +108,7 @@ spec:
                       password_aux=$(cat "$MARIADB_ROOT_PASSWORD_FILE")
                   fi
                   mysqladmin status -uroot -p"${password_aux}"
-          resources: 
+          resources:
             limits: {}
             requests: {}
           volumeMounts:
@@ -124,11 +120,11 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: ghost-mariadb
+            name: test-ghost-mariadb
   volumeClaimTemplates:
     - metadata:
         name: data
-        labels: 
+        labels:
           app.kubernetes.io/name: mariadb
           app.kubernetes.io/instance: ghost
           app.kubernetes.io/component: primary
