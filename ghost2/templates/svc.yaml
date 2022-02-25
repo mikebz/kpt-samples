@@ -1,10 +1,9 @@
----
 # Source: ghost/templates/svc.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: ghost
-  namespace: "default"
+  namespace: example-ns
   labels:
     app.kubernetes.io/name: ghost
     helm.sh/chart: ghost-14.0.22
@@ -13,7 +12,7 @@ metadata:
     app.kubernetes.io/component: ghost
 spec:
   type: LoadBalancer
-  externalTrafficPolicy: "Cluster"
+  externalTrafficPolicy: Cluster
   ports:
     - name: http
       port: 80

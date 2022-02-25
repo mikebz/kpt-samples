@@ -1,10 +1,9 @@
----
 # Source: ghost/charts/mariadb/templates/primary/statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: ghost-mariadb
-  namespace: default
+  namespace: example-ns
   labels:
     app.kubernetes.io/name: mariadb
     helm.sh/chart: mariadb-9.6.1
@@ -15,7 +14,7 @@ spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
-    matchLabels: 
+    matchLabels:
       app.kubernetes.io/name: mariadb
       app.kubernetes.io/instance: ghost
       app.kubernetes.io/component: primary
@@ -33,11 +32,9 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: primary
     spec:
-      
       serviceAccountName: ghost-mariadb
       affinity:
-        podAffinity:
-          
+        podAffinity: null
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - podAffinityTerm:
@@ -47,17 +44,16 @@ spec:
                     app.kubernetes.io/instance: ghost
                     app.kubernetes.io/component: primary
                 namespaces:
-                  - "default"
+                  - default
                 topologyKey: kubernetes.io/hostname
               weight: 1
-        nodeAffinity:
-          
+        nodeAffinity: null
       securityContext:
         fsGroup: 1001
       containers:
         - name: mariadb
           image: docker.io/bitnami/mariadb:10.5.12-debian-10-r32
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: IfNotPresent
           securityContext:
             runAsUser: 1001
           env:
@@ -69,14 +65,14 @@ spec:
                   name: ghost-mariadb
                   key: mariadb-root-password
             - name: MARIADB_USER
-              value: "bn_ghost"
+              value: bn_ghost
             - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: ghost-mariadb
                   key: mariadb-password
             - name: MARIADB_DATABASE
-              value: "bitnami_ghost"
+              value: bitnami_ghost
           ports:
             - name: mysql
               containerPort: 3306
@@ -112,7 +108,7 @@ spec:
                       password_aux=$(cat "$MARIADB_ROOT_PASSWORD_FILE")
                   fi
                   mysqladmin status -uroot -p"${password_aux}"
-          resources: 
+          resources:
             limits: {}
             requests: {}
           volumeMounts:
@@ -128,13 +124,13 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: data
-        labels: 
+        labels:
           app.kubernetes.io/name: mariadb
           app.kubernetes.io/instance: ghost
           app.kubernetes.io/component: primary
       spec:
         accessModes:
-          - "ReadWriteOnce"
+          - ReadWriteOnce
         resources:
           requests:
-            storage: "8Gi"
+            storage: 8Gi

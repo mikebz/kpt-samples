@@ -1,17 +1,15 @@
----
 # Source: ghost/charts/mariadb/templates/primary/svc.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: ghost-mariadb
-  namespace: default
+  namespace: example-ns
   labels:
     app.kubernetes.io/name: mariadb
     helm.sh/chart: mariadb-9.6.1
     app.kubernetes.io/instance: ghost
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: primary
-  annotations:
 spec:
   type: ClusterIP
   ports:
@@ -20,7 +18,7 @@ spec:
       protocol: TCP
       targetPort: mysql
       nodePort: null
-  selector: 
+  selector:
     app.kubernetes.io/name: mariadb
     app.kubernetes.io/instance: ghost
     app.kubernetes.io/component: primary
