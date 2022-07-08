@@ -1,0 +1,19 @@
+---
+# Source: ghost/templates/pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: release-name-ghost
+  namespace: "default"
+  labels:
+    app.kubernetes.io/name: ghost
+    helm.sh/chart: ghost-19.0.8
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: ghost
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"
