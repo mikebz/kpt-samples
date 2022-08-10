@@ -2,6 +2,7 @@ apiVersion: kpt.dev/v1
 kind: Kptfile
 metadata:
   name: ghost2
+  namespace: example-ns
 info:
   description: sample description
 pipeline:
@@ -9,3 +10,7 @@ pipeline:
     - image: gcr.io/kpt-fn/set-namespace:v0.2.0
       configMap:
         namespace: example-ns
+inventory:
+  namespace: example-ns
+  name: inventory-84405826
+  inventoryID: 45d52d6b63fc9fc9952c3b575f2b84153b2f36e6-1649391143201921337
