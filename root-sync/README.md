@@ -1,7 +1,7 @@
 # root-sync
 
 ## Description
-sample description
+RootSync and cluster configuration for kgr
 
 ## Usage
 
