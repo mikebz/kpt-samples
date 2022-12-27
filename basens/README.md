@@ -6,7 +6,7 @@ kpt package for provisioning namespace
 ## Usage
 
 ### Fetch the package
-`kpt pkg get REPO_URI[.git]/PKG_PATH[@VERSION] basens`
+`kpt pkg get https://github.com/mikebz/kpt-samples/basens basens`
 Details: https://kpt.dev/reference/cli/pkg/get/
 
 ### View package content
