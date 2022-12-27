@@ -1,8 +1,8 @@
 apiVersion: kpt.dev/v1
 kind: Kptfile
 metadata:
-  name: root-sync
+  name: cluster-config
 info:
-  description: sample description
+  description: cluster configuration RootSync
 pipeline:
   mutators:
