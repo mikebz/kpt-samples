@@ -4,7 +4,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: release-name-ghost
-  namespace: "default"
   labels:
     app.kubernetes.io/name: ghost
     helm.sh/chart: ghost-19.0.8

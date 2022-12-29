@@ -4,7 +4,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: release-name-ghost
-  namespace: "default"
   labels:
     app.kubernetes.io/name: ghost
     helm.sh/chart: ghost-19.0.8
@@ -41,8 +40,6 @@ spec:
                   matchLabels:
                     app.kubernetes.io/name: ghost
                     app.kubernetes.io/instance: release-name
-                namespaces:
-                  - "default"
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:
